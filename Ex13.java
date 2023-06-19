@@ -26,22 +26,27 @@ public class Ex13 {
         return isSum(a, num, index + 1, 1);
     }
     
+
     public static int missingValue (int [] arr) {
-        int length = arr.length;
-        int delta = arr[1] - arr[0];
-        int retVal = Integer.MAX_VALUE;
-        for (int i=2; i < length; i++) {
-            int curDelta = arr[i] - arr[i - 1];
-            if (curDelta / delta == 0) {
-                retVal = arr[i - 1] - curDelta;
-                break;
-            }
-            else if (curDelta / delta == 2) {
-                retVal = arr[i] - delta;
-                break;
+        int low = 0;
+        int high = arr.length - 1;
+        int d = arr[1] - arr[0];
+        int an = 0;
+
+        while (low != high) {
+            int mid = (low + high) / 2;
+            an = arr[0] + (mid*d);
+            if (arr[mid] == an) {
+                low = mid+1;
+            } else if (arr[mid] < an) {
+                d = an - arr[mid];
+                high = mid;
+            } else {
+                high = mid;
             }
         }
-        return retVal;
+
+        return arr[0]+(low*d); // Target element not found
     }
     
      public static int longestPalindrome(int[] arr) {

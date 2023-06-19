@@ -36,6 +36,8 @@ public class Ex13StudentTester2023b {
             runEx2(arr1, 19);
             int []arr2 = {7,13,16,19,22,25};
             runEx2(arr2, 10);
+            int []arr3 = {7,10,13,16,19,25};
+            runEx2(arr3, 22);
 
         }
 
