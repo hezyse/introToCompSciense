@@ -76,47 +76,48 @@ public class Ex13 {
             return Math.max(length1, length2);
         }
     }
-    
-     public static int shortestRoad(int[] road1, int[] road2) {
+
+
+    public static int shortestRoad(int[] road1, int[] road2) {
+
         int n = road1.length;
-        int totalTime = 0;
 
-        // Calculate the total time if the driver stays on road 1 without switching
-        for (int i = 0; i < n; i++) {
-            totalTime += road1[i];
+        int[] reverseRoad1 = new int[n];
+        int[] reverseRoad2 = new int[n];
+
+
+        reverseRoad1[n-1] = road1[n-1];
+        if(n>=2) {
+            for (int i = n - 2; i >= 0; i--) {
+                reverseRoad1[i] = reverseRoad1[i + 1] + road1[i];
+            }
         }
 
-        // Calculate the total time if the driver switches from road 1 to road 2
-        // Find the minimum time to switch by comparing the time at each index
-        int switchTime = Integer.MAX_VALUE;
-        int currentTotalTime = 0;
-        for (int i = 0; i < n; i++) {
-            currentTotalTime += road1[i];
-            int remainingTime = getTotalTime(road2, i + 1, n);
-            switchTime = Math.min(switchTime, currentTotalTime + remainingTime);
+        reverseRoad2[n-1] = road2[n-1];
+        if(n >= 2) {
+            for (int i = n - 2; i >= 0; i--) {
+                reverseRoad2[i] = reverseRoad2[i + 1] + road2[i];
+            }
         }
 
-        // Calculate the total time if the driver switches from road 2 to road 1
-        // Find the minimum time to switch by comparing the time at each index
-        currentTotalTime = 0;
-        for (int i = 0; i < n; i++) {
-            currentTotalTime += road2[i];
-            int remainingTime = getTotalTime(road1, i + 1, n);
-            switchTime = Math.min(switchTime, currentTotalTime + remainingTime);
+        int minTotalTime = Math.min(reverseRoad2[0], reverseRoad1[0]);
+
+        int totalRoad1 = 0;
+        int totalRoad2 = 0;
+
+        for(int i=0; i<n-1; i++){
+            totalRoad1 += road1[i];
+            totalRoad2 += road2[i];
+            int minCurrentRoad1 = Math.min(totalRoad1 + reverseRoad2[i+1], totalRoad1 + reverseRoad1[i+1]);
+            int minCurrentRoad2 = Math.min(totalRoad2 + reverseRoad2[i+1], totalRoad2 + reverseRoad1[i+1]);
+            int currentMinRoute = Math.min(minCurrentRoad1, minCurrentRoad2);
+            minTotalTime = Math.min(minTotalTime, currentMinRoute);
         }
 
-        // Return the minimum time among the three possibilities
-        return Math.min(totalTime, switchTime);
+
+
+        return minTotalTime;
     }
-
-    private static int getTotalTime(int[] road, int startIndex, int endIndex) {
-        int totalTime = 0;
-        for (int i = startIndex; i < endIndex; i++) {
-            totalTime += road[i];
-        }
-        return totalTime;
-    }
-
 
     
 }
