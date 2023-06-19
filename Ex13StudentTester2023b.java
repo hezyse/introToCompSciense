@@ -36,6 +36,8 @@ public class Ex13StudentTester2023b {
             runEx2(arr1, 19);
             int []arr2 = {7,13,16,19,22,25};
             runEx2(arr2, 10);
+            int []arr3 = {7,10,13,16,19,25};
+            runEx2(arr3, 22);
 
         }
 
@@ -43,6 +45,8 @@ public class Ex13StudentTester2023b {
         System.out.println("***     Q3  - longestPalindrome      ***");
         System.out.println("----------------------------------------");
         {
+            int[] arr0= {1,3,2,1};
+            runEx3(arr0,1);
             int[] arr1= {1,3,2,3,10,10,3,2,4};
             runEx3(arr1,6);
             int[] arr2 = {1, 2, 3, 4, 5, 4, 3, 2, 1};
@@ -55,6 +59,12 @@ public class Ex13StudentTester2023b {
             runEx3(arr5,2);
             int[] arr6 = {1,3,2,4,5,2,3,1};
             runEx3(arr6,1);
+            int[] arr7 = {2, 4, 2, 10, 12, 10, 2};
+            runEx3(arr7,5);
+            int[] arr8 = {3, 6, 3, 9, 5, 3, 6, 3};
+            runEx3(arr8,3);
+            int[] arr9 = {1, 1, 1, 1, 1, 1, 3, 6, 9, 7, 8, 9, 6, 3, 1, 1, 1, 1, 1, 1};
+            runEx3(arr9,6);
         }
         System.out.println("----------------------------------------");
         System.out.println("***       Q4  - isSum                ***");
