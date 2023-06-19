@@ -63,8 +63,17 @@ public class Ex13 {
             int innerPolindrome = 2 + next_inner;
             if (innerPolindrome != 2 || start + 1 >= end - 1)
                 return innerPolindrome;
-            else
+            else if(start == 0) {
+                // If the first and last elements are not the same, recursively check the sequence without the last element
+                int length1 = longestPalindrome(arr, start, end - 1, false);
+                // Recursively check the sequence without the first element
+                int length2 = longestPalindrome(arr, start + 1, end, false);
+                // Return the maximum length between the two cases
+                return Math.max(length1, length2);
+            }
+            else {
                 return 0;
+            }
         } else if (arr[start] != arr[end] && previousMatched) {
             return 0;
         } else {
