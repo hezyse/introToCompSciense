@@ -29,7 +29,7 @@ public class Q12023a {
         int[][] matrix = new int[rows][cols];
         matrix[0][0] = 0;
         matrix[0][1] = 1;
-        matrix[0][2] = 0;
+        matrix[0][2] = 1;
         matrix[0][3] = 0;
         matrix[0][4] = 0;
         matrix[0][5] = 1;
@@ -47,7 +47,7 @@ public class Q12023a {
         matrix[1][7] = 0;
         matrix[1][8] = 0;
         matrix[1][9] = 1;
-        matrix[2][0] = 0;
+        matrix[2][0] = 1;
         matrix[2][1] = 1;
         matrix[2][2] = 0;
         matrix[2][3] = 0;
